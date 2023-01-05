@@ -1,0 +1,57 @@
+<mat-sidenav-container>
+  <mat-sidenav class="mat-elevation-z8" mode="side" opened="true">
+    <app-sidebar-menu></app-sidebar-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let task"> {{task.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripcion</th>
+          <td mat-cell *matCellDef="let task"> {{task.descripcion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef> Tipo  </th>
+          <td mat-cell *matCellDef="let task"> {{task.tipo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaInicioEstimada">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Inicio Estimada </th>
+          <td mat-cell *matCellDef="let task"> {{task.fechaInicioEstimada}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaInicioReal">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Inicio Real</th>
+          <td mat-cell *matCellDef="let task"> {{task.fechaInicioReal}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="duracionEstimada">
+          <th mat-header-cell *matHeaderCellDef> Duracion Estimada </th>
+          <td mat-cell *matCellDef="let task"> {{task.duracionEstimada}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="duracionReal">
+          <th mat-header-cell *matHeaderCellDef> Duracion Real </th>
+          <td mat-cell *matCellDef="let task"> {{task.duracionReal}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="nombreClave">
+          <th mat-header-cell *matHeaderCellDef> Nombre Clave de proyecto </th>
+          <td mat-cell *matCellDef="let task"> {{task.nombreClave}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
