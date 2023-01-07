@@ -24,6 +24,8 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { UsersComponent } from './users/users.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { VersionComponent } from './version/version.component';
+import { DocumentosComponent } from './documentos/documentos.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { TasksComponent } from './tasks/tasks.component';
       { path: 'projects', component: ProjectsComponent},
       { path: 'users', component: UsersComponent},
       { path: 'tasks', component: TasksComponent},
+      { path: 'version', component: VersionComponent},
    ]),
+
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -57,7 +61,9 @@ import { TasksComponent } from './tasks/tasks.component';
     ProjectsComponent,
     SidebarMenuComponent,
     UsersComponent,
-    TasksComponent
+    TasksComponent,
+    VersionComponent,
+    DocumentosComponent
     ],
   bootstrap: [
     AppComponent
