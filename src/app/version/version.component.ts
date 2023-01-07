@@ -7,4 +7,30 @@ import { Component } from '@angular/core';
 })
 export class VersionComponent {
 
+  version = [
+    {
+      fecha:"",
+      codigo:"",
+      descripcion:"",
+    },
+    {
+      fecha:"",
+      codigo:"",
+      descripcion:"",
+    },
+    {
+      fecha:"",
+      codigo:"",
+      descripcion:"",
+    },
+    {
+      fecha:"",
+      codigo:"",
+      descripcion:"",
+    }
+
+  ];
+
+  displayedColumns: string[] = ['fecha', 'codigo', 'descripcion'];
+
 }

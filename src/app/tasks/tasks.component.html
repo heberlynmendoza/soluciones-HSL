@@ -4,8 +4,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
+      <button mat-raised-button color="accent" class="createbutton">Nueva</button>
       <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
-
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
           <td mat-cell *matCellDef="let task"> {{task.id}} </td>

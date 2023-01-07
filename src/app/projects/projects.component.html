@@ -1,14 +1,11 @@
-
-
-
 <mat-sidenav-container>
   <mat-sidenav class="mat-elevation-z8" mode="side" opened="true">
     <app-sidebar-menu></app-sidebar-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
+      <button mat-raised-button color="accent" class="createbutton">Nuevo</button>
       <table mat-table [dataSource]="projects" class="mat-elevation-z8">
-
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
           <td mat-cell *matCellDef="let project"> {{project.id}} </td>
@@ -41,3 +38,5 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+

@@ -41,6 +41,7 @@ import { DocumentosComponent } from './documentos/documentos.component';
       { path: 'users', component: UsersComponent},
       { path: 'tasks', component: TasksComponent},
       { path: 'version', component: VersionComponent},
+      { path: 'documentos', component: DocumentosComponent},
    ]),
 
     BrowserAnimationsModule,
