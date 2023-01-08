@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class VersionComponent {
 
-  version = [
+  versions = [
     {
       fecha:"",
       codigo:"",

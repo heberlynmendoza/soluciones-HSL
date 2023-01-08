@@ -1,42 +1,52 @@
-<mat-sidenav-container>
-  <mat-sidenav class="mat-elevation-z8" mode="side" opened="true">
-    <app-sidebar-menu></app-sidebar-menu>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
-      <button mat-raised-button color="accent" class="createbutton">Nuevo</button>
-      <table mat-table [dataSource]="projects" class="mat-elevation-z8">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> ID </th>
-          <td mat-cell *matCellDef="let project"> {{project.id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let project"> {{project.name}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fechaInicio">
-          <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
-          <td mat-cell *matCellDef="let project"> {{project.fechaInicio}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fechaFinal">
-          <th mat-header-cell *matHeaderCellDef> Fecha Final </th>
-          <td mat-cell *matCellDef="let project"> {{project.fechaFinal}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="descripcion">
-          <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-          <td mat-cell *matCellDef="let project"> {{project.descripcion}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
+<div class="row">
+  <div class="col-2">
+    <div class="sidebar-menu-container">
+      <app-sidebar-menu></app-sidebar-menu>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+  <div class="col-10">
+    <div class="content-container">
+      <div class="row">
+        <div class="col-4">
+          <div>
+            <ul class="list-group">
+              <li *ngFor="let project of projects" class="list-group-item"
+              (click)="openForEdit(project)" [class.active]="project == selectedProject ">
+                <span class="badge badge-primary"> {{project.id}} </span> {{ project.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-8">
+          <div>
+            <div class="form-group">
+              <label for="">Nombre</label>
+              <input type="text" [(ngModel)]="selectedProject.name" name="name" placeholder="Nombre"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Fecha de Inicio</label>
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedProject.fechaInicio"
+                ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
+            </div>
+            <div class="form-group">
+              <label for="">Fecha Final</label>
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedProject.fechaFinal"
+                ngbDatepicker #f="ngbDatepicker" (focus)="f.toggle()" [autoClose]="'outside'" />
+            </div>
+            <div class="form-group">
+              <label for="">Descripcion</label>
+              <textarea class="form-control" [(ngModel)]="selectedProject.descripcion" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+            <button *ngIf="selectedProject.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
+          </div>
+        </div>
+      </div>
+      <!-- <button  class="createbutton" data-toggle="modal" data-target="#exampleModal">Nuevo</button> -->
 
-
+    </div>
+  </div>
+</div>

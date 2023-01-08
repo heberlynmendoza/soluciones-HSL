@@ -14,6 +14,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 import { AppComponent } from './app.component';
@@ -26,6 +28,7 @@ import { UsersComponent } from './users/users.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { VersionComponent } from './version/version.component';
 import { DocumentosComponent } from './documentos/documentos.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -37,12 +40,12 @@ import { DocumentosComponent } from './documentos/documentos.component';
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'projects', component: ProjectsComponent},
-      { path: 'users', component: UsersComponent},
-      { path: 'tasks', component: TasksComponent},
-      { path: 'version', component: VersionComponent},
-      { path: 'documentos', component: DocumentosComponent},
-   ]),
+      { path: 'projects', component: ProjectsComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'tasks', component: TasksComponent },
+      { path: 'version', component: VersionComponent },
+      { path: 'documentos', component: DocumentosComponent },
+    ]),
 
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -53,7 +56,10 @@ import { DocumentosComponent } from './documentos/documentos.component';
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    NgbModule,
+
   ],
   declarations: [
     AppComponent,
@@ -64,8 +70,8 @@ import { DocumentosComponent } from './documentos/documentos.component';
     UsersComponent,
     TasksComponent,
     VersionComponent,
-    DocumentosComponent
-    ],
+    DocumentosComponent,
+  ],
   bootstrap: [
     AppComponent
   ]
