@@ -1,42 +1,73 @@
-<mat-sidenav-container>
-  <mat-sidenav class="mat-elevation-z8" mode="side" opened="true">
-    <app-sidebar-menu></app-sidebar-menu>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
-      <button mat-raised-button color="accent" class="createbutton">Nuevo</button>
-      <table mat-table [dataSource]="users" class="mat-elevation-z8">
-
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> ID </th>
-          <td mat-cell *matCellDef="let user"> {{user.id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let user"> {{user.nombre}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="apellido">
-          <th mat-header-cell *matHeaderCellDef> Apellido  </th>
-          <td mat-cell *matCellDef="let user"> {{user.apellido}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="edad">
-          <th mat-header-cell *matHeaderCellDef>  Edad </th>
-          <td mat-cell *matCellDef="let user"> {{user.edad}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="cedula">
-          <th mat-header-cell *matHeaderCellDef> Cedula </th>
-          <td mat-cell *matCellDef="let user"> {{user.cedula}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
+<div class="row">
+  <div class="col-2">
+    <div class="sidebar-menu-container">
+      <app-sidebar-menu></app-sidebar-menu>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+  <div class="col-10">
+    <div class="content-container">
+      <div class="row">
+        <div class="col-4">
+          <div>
+            <ul class="list-group">
+              <li *ngFor="let users of users" class="list-group-item"
+              (click)="openForEdit(users)" [class.active]="users == selectedUsers ">
+                <span class="badge badge-primary"> {{users.id}} </span> {{ users.nombre }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-8">
+          <div>
+            <div class="form-group">
+              <label for="">Nombre</label>
+              <input type="text" [(ngModel)]="selectedUsers.nombre" nombre="nombre" placeholder="Nombre"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Apellido</label>
+              <input type="text" [(ngModel)]="selectedUsers.apellido" apellido="apellido" placeholder="Apellido"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Cedula</label>
+              <input type="numbers" [(ngModel)]="selectedUsers.cedula" cedula="cedula" placeholder="Cedula"
+              class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Direccion</label>
+              <input type="text" [(ngModel)]="selectedUsers.direccion" direccion="direccion" placeholder="Direccion"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Correo Electronico</label>
+              <input type="text" [(ngModel)]="selectedUsers.correoElectronico" correoElectronico="correoElectronico" placeholder="CorreoElectronico"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Telefono</label>
+              <input type="numbers" [(ngModel)]="selectedUsers.telefono" telefono="telefono" placeholder="Telefono"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Fecha de Contratacion</label>
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedUsers.fechaContratacion"
+                ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
+            </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+          <button *ngIf="selectedUsers.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 

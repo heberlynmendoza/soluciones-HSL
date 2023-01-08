@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Users } from '../models/users';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -7,32 +7,61 @@ import { Component } from '@angular/core';
 })
 export class UsersComponent {
 
-  users = [
+  users: Users[] = [
     {
       id: 1,
       nombre:"Jose",
       apellido: "Perez",
-      edad: "20",
-      cedula: "29456987"
+      cedula: 29456987,
+      direccion: "",
+      correoElectronico:"",
+      telefono: 412659832,
+      fechaContratacion: 12-1-2023
     },
     {
       id: 2,
       nombre:"Maria",
       apellido: "Lopez",
-      edad: "46",
-      cedula: "13986523"
+      cedula: 29856971,
+      direccion: "",
+      correoElectronico:"",
+      telefono: 412659832,
+      fechaContratacion: 12-2-2022
     },
     {
     id: 3,
     nombre:"Carlos",
     apellido: "Mendez",
-    edad: "56",
-    cedula: "7589631"
+    cedula: 7589631,
+    direccion: "",
+    correoElectronico:"",
+    telefono: 42666832,
+    fechaContratacion: 1-2-2022
     }
 
 
   ];
 
- displayedColumns: string[] = ['id', 'nombre', 'apellido', 'edad', 'cedula'];
+  selectedUsers: Users = new Users();
 
+  addOrEdit() {
+
+    if (this.selectedUsers.id === 0) {
+      this.selectedUsers.id = this.users.length + 1;
+      this.users.push(this.selectedUsers);
+    }
+    this.selectedUsers = new Users();
+    console.log(this.users);
+  }
+
+  openForEdit(users: Users) {
+    this.selectedUsers = users;
+  }
+
+  delete(){
+    if(confirm('Seguro que deseas eliminar este empleado?')){
+      this.users = this.users.filter( x => x.id !== this.selectedUsers.id);
+      this.selectedUsers = new Users();
+    }
+  }
 }
