@@ -12,7 +12,7 @@
             <ul class="list-group">
               <li *ngFor="let project of projects" class="list-group-item"
               (click)="openForEdit(project)" [class.active]="project == selectedProject ">
-                <span class="badge badge-primary"> {{project.id}} </span> {{ project.name }}
+                <span class="badge badge-primary"> {{project.id}} </span> {{ project.nombre_clave }}
               </li>
             </ul>
           </div>
@@ -20,23 +20,19 @@
         <div class="col-8">
           <div>
             <div class="form-group">
-              <label for="">Nombre</label>
-              <input type="text" [(ngModel)]="selectedProject.name" name="name" placeholder="Nombre"
+              <label for="">Nombre en clave</label>
+              <input type="text" [(ngModel)]="selectedProject.nombre_clave" nombre_clave="nombre_clave" placeholder="Nombre en clave"
                 class="form-control">
             </div>
             <div class="form-group">
-              <label for="">Fecha de Inicio</label>
-              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedProject.fechaInicio"
-                ngbDatepicker #d="ngbDatepicker" (focus)="d.toggle()" [autoClose]="'outside'" />
+              <label for="">Denominacion comercial</label>
+              <input type="text" [(ngModel)]="selectedProject.denominacion_comercial" denominacion_comercial="denominacion_comercial" placeholder="Denominacion comercial"
+                class="form-control">
             </div>
             <div class="form-group">
-              <label for="">Fecha Final</label>
-              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="selectedProject.fechaFinal"
-                ngbDatepicker #f="ngbDatepicker" (focus)="f.toggle()" [autoClose]="'outside'" />
-            </div>
-            <div class="form-group">
-              <label for="">Descripcion</label>
-              <textarea class="form-control" [(ngModel)]="selectedProject.descripcion" rows="3"></textarea>
+              <label for="">Estado actual</label>
+              <input type="text" [(ngModel)]="selectedProject.estado_actual" estado_actual="estado_actual" placeholder="Estado actual"
+                class="form-control">
             </div>
           </div>
           <div class="form-group">

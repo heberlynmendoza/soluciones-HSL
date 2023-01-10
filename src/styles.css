@@ -77,8 +77,8 @@ mat-divider {
   text-align: center;
 }
 
-.component-initial {
-  overflow: hidden;
+.component-initial::-webkit-scrollbar {
+  display: none;
 }
 
 .table-datasource {
@@ -97,4 +97,15 @@ mat-divider {
 
 .form-group {
   margin: 10px 0;
+}
+
+.login-card {
+  width: 400px;
+  padding: 20px;
+  margin: auto;
+  top: 100px;
+}
+
+.row {
+    margin-right: 0;
 }

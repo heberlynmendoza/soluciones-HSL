@@ -16,17 +16,24 @@ export class ProjectsComponent {
   projects: Projects[] = [
     {
       id: 1,
-      name: "Proyecto 1",
-      fechaInicio: new Date(),
-      fechaFinal: new Date(),
-      descripcion: "Loremp Ipsum"
+      codigo: 1238966,
+      nombre_clave: "Proyecto 1",
+      denominacion_comercial:"",
+      estado_actual: "",
     },
     {
       id: 2,
-      name: "Proyecto 2",
-      fechaInicio: new Date(),
-      fechaFinal: new Date(),
-      descripcion: "Loremp Ipsum 2"
+      codigo: 238965,
+      nombre_clave: "Proyecto 2",
+      denominacion_comercial:"",
+      estado_actual: "",
+    },
+    {
+      id: 3,
+      codigo: 338975,
+      nombre_clave: "Proyecto 3",
+      denominacion_comercial:"",
+      estado_actual: "",
     }
   ]
 

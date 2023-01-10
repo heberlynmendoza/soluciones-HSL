@@ -1,57 +1,64 @@
-<mat-sidenav-container>
-  <mat-sidenav class="mat-elevation-z8" mode="side" opened="true">
-    <app-sidebar-menu></app-sidebar-menu>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="content mat-elevation-z8">
-      <button mat-raised-button color="accent" class="createbutton">Nueva</button>
-      <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> ID </th>
-          <td mat-cell *matCellDef="let task"> {{task.id}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="descripcion">
-          <th mat-header-cell *matHeaderCellDef> Descripcion</th>
-          <td mat-cell *matCellDef="let task"> {{task.descripcion}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="tipo">
-          <th mat-header-cell *matHeaderCellDef> Tipo  </th>
-          <td mat-cell *matCellDef="let task"> {{task.tipo}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fechaInicioEstimada">
-          <th mat-header-cell *matHeaderCellDef> Fecha de Inicio Estimada </th>
-          <td mat-cell *matCellDef="let task"> {{task.fechaInicioEstimada}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="fechaInicioReal">
-          <th mat-header-cell *matHeaderCellDef> Fecha de Inicio Real</th>
-          <td mat-cell *matCellDef="let task"> {{task.fechaInicioReal}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="duracionEstimada">
-          <th mat-header-cell *matHeaderCellDef> Duracion Estimada </th>
-          <td mat-cell *matCellDef="let task"> {{task.duracionEstimada}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="duracionReal">
-          <th mat-header-cell *matHeaderCellDef> Duracion Real </th>
-          <td mat-cell *matCellDef="let task"> {{task.duracionReal}} </td>
-        </ng-container>
-
-
-        <ng-container matColumnDef="nombreClave">
-          <th mat-header-cell *matHeaderCellDef> Nombre Clave de proyecto </th>
-          <td mat-cell *matCellDef="let task"> {{task.nombreClave}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+<div class="row">
+  <div class="col-2">
+    <div class="sidebar-menu-container">
+      <app-sidebar-menu></app-sidebar-menu>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
+  </div>
+  <div class="col-10">
+    <div class="content-container">
+      <div class="row">
+        <div class="col-4">
+          <div>
+          <ul class="list-group">
+            <li *ngFor="let tasks of tasks" class="list-group-item"
+            (click)="openForEdit(tasks)" [class.active]="tasks == selectedTasks ">
+              <span class="badge badge-primary"> {{tasks.id}} </span> {{ tasks.descripcion }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-8">
+        <div>
+          <div class="form-group">
+            <label for="">Descripcion</label>
+            <textarea class="form-control" [(ngModel)]="selectedTasks.descripcion" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Tipo</label>
+            <input type="text" [(ngModel)]="selectedTasks.tipo" tipo="tipo" placeholder="Tipo"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Fecha de inicio estimada</label>
+            <input type="numbers" [(ngModel)]="selectedTasks.fechaInicioEstimada" fechaInicioEstimada="fechaInicioEstimada" placeholder="Fecha de Inicio Estimada"
+            class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Fecha de Inicio Real</label>
+            <input type="numbers" [(ngModel)]="selectedTasks.fechaInicioReal" fechaInicioReal="fechaInicioReal" placeholder="Fecha de Inicio Real"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Duracion Estimada</label>
+            <input type="text" [(ngModel)]="selectedTasks.duracionEstimada" duracionEstimada="duracionEstimada" placeholder="Duracion Estimada"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Duracion Real</label>
+            <input type="text" [(ngModel)]="selectedTasks.duracionReal" duracionReal="duracionReal" placeholder="Duracion Real"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Nombre en clave de proyecto</label>
+            <input type="text" [(ngModel)]="selectedTasks.nombreClave" nombreClave="nombreClave" placeholder="Nombre en Clave de proyecto"
+              class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="addOrEdit()">Guardar</button>
+          <button *ngIf="selectedTasks.id !== 0" type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 

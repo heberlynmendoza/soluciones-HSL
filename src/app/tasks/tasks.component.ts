@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Tasks } from '../models/tasks';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -12,8 +12,8 @@ export class TasksComponent {
       id: 1,
       descripcion: "Problema con el panel de control",
       tipo: "De informatica",
-      fechaInicioEstimada:"10/05/2022",
-      fechaInicioReal:"02/08/2022",
+      fechaInicioEstimada:2-5-2022,
+      fechaInicioReal:2-8-2022,
       duracionEstimada:"Un mes",
       duracionReal:"Tres meses",
       nombreClave:"JJ8"
@@ -22,8 +22,8 @@ export class TasksComponent {
       id: 2,
       descripcion: "Problema con el inicio de sesion",
       tipo: "De logistica",
-      fechaInicioEstimada:"10/07/2022",
-      fechaInicioReal:"13/10/2022",
+      fechaInicioEstimada:10-7-2022,
+      fechaInicioReal:13-10-2022,
       duracionEstimada:"Un mes",
       duracionReal:"Tres meses",
       nombreClave:"JJ8"
@@ -32,8 +32,8 @@ export class TasksComponent {
       id: 3,
       descripcion: "Problema con el menu",
       tipo: "De informatica",
-      fechaInicioEstimada:"10/05/2022",
-      fechaInicioReal:"02/08/2022",
+      fechaInicioEstimada: 10-5-2022,
+      fechaInicioReal: 2-8-2022,
       duracionEstimada:"Un mes",
       duracionReal:"Tres meses",
       nombreClave:"JJ8"
@@ -41,5 +41,27 @@ export class TasksComponent {
 
   ];
 
- displayedColumns: string[] = ['id', 'descripcion', 'tipo','fechaInicioReal','fechaInicioEstimada','duracionReal','duracionEstimada','nombreClave'];
+  selectedTasks: Tasks = new Tasks();
+
+  addOrEdit() {
+
+    if (this.selectedTasks.id === 0) {
+      this.selectedTasks.id = this.tasks.length + 1;
+      this.tasks.push(this.selectedTasks);
+    }
+    this.selectedTasks = new Tasks();
+    console.log(this.tasks);
+  }
+
+  openForEdit(tasks: Tasks) {
+    this.selectedTasks = tasks;
+  }
+
+  delete(){
+    if(confirm('Seguro que deseas eliminar esta tarea?')){
+      this.tasks = this.tasks.filter( x => x.id !== this.selectedTasks.id);
+      this.selectedTasks = new Tasks();
+    }
+  }
+
 }

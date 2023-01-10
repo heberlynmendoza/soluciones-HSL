@@ -1,7 +1,7 @@
 export class Projects {
   id: number = 0;
-  name: string;
-  fechaInicio: Date;
-  fechaFinal: Date;
-  descripcion: string;
+  codigo: number;
+  nombre_clave: string;
+  denominacion_comercial: string;
+  estado_actual: string;
 }
